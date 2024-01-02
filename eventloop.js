@@ -20,8 +20,7 @@ function flattenArray(arr){
   
   arr.forEach((element) => {
     if(Array.isArray(element)){
-      flattenArray(element);
-      
+      flattenArray(element);  
     }
     else {
       newArr.push(element);      
