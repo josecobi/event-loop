@@ -46,3 +46,28 @@
 // console.log(result);
 
 //>>>>>>>>>>>>>>>>>>>>part 3: Trampolines<<<<<<<<<<<<<<<
+
+const paragraphEl = document.querySelector(".paragraph");
+
+function listPrimeNumbers(n){
+    for(let i = 0; i < n; i++){
+        if(isPrime(i)){
+            paragraphEl.textContent += ` ${i}`;
+        }
+    }    
+    alert("Calculation is finished");
+}
+
+function isPrime(number){
+    if(number < 2){
+        return false;
+    }
+    for (let i = 2; i <= Math.sqrt(number); i++){
+        if(number % i === 0){
+            return false;
+        }
+    }
+    return true;
+}
+
+listPrimeNumbers(10000);
