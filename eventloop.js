@@ -16,18 +16,32 @@
 
 //>>>>>>>>>>>>>>>>>>>>part 2: Trampolines<<<<<<<<<<<<<<<
 let nestedArray = [1, [2, [3, 4], 5], [6, 7], 8, [9, [10, 11]]];
-function flattenArray(arr, newArr = []){
-  
-  arr.forEach((element) => {
-    if(Array.isArray(element)){
-      flattenArray(element, newArr);  
-    }
-    else {
-      newArr.push(element);      
-    }
-  });
- return newArr; 
+
+function trampoline(fn) {
+    return function (...args) {
+        let result = fn(...args);
+        while (typeof result === 'function') {
+            result = result();
+        }
+        return result;
+    };
 }
 
-console.log(flattenArray(nestedArray));
+function flattenArray(arr) {
+    function flatten(arr, result = []) {
+        arr.forEach((element) => {
+            if (Array.isArray(element)) {
+                return flatten(element, result);
+            } else {
+                result.push(element);
+            }
+        });
+        return result;
+    }
+
+    return trampoline(flatten)(arr);
+}
+
+let result = flattenArray(nestedArray);
+console.log(result);
 
