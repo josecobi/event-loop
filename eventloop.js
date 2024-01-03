@@ -45,7 +45,7 @@
 // let result = flattenArray(nestedArray);
 // console.log(result);
 
-//>>>>>>>>>>>>>>>>>>>>part 3: Trampolines<<<<<<<<<<<<<<<
+//>>>>>>>>>>>>>>>>>>>>part 3: Deferred Execution<<<<<<<<<<<<<<<
 
 const paragraphEl = document.querySelector(".paragraph");
 
